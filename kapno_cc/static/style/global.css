@@ -88,13 +88,70 @@ h1, h2, h3, h4, h5, h6 {
  */
 
 .contents-wrapper {
-    max-width: 60rem;
+    max-width: 70rem;
     padding: 1em;
-    display: block;
     margin: 0 auto;
+    margin-bottom: 50px;
 }
 
 .contents {
-    display: block;
     text-align: justify;
+}
+
+/*
+ *  FOOTER
+ */
+
+.footer {
+    position: fixed;
+    min-height: 20px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #333;
+    color: #fff;
+    margin: 0;
+    margin-top: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    vertical-align: middle;
+    text-align: center;
+    font-family: "Roboto Mono", monospace;
+}
+
+/*
+ *  LANGUAGE SELECTOR
+ */
+
+.lang-select-wrapper {
+    text-align: right;
+}
+
+.lang-select-wrapper > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.lang-select-wrapper form {
+    display: inline;
+}
+
+.lang-select-wrapper-button {
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-bottom: .1em solid transparent;
+    background: none!important;
+    color: #fff;
+    padding: 0;
+    margin-left: 16px;
+    margin-right: 16px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    transition: 250ms border ease-in-out;
+}
+
+.lang-select-wrapper-button:hover {
+    border-bottom: .1em solid rgba(255,255,255,.75);
 }
