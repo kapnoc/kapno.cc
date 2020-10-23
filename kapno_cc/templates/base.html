@@ -28,7 +28,7 @@
                     <a href="{% url 'home:index' %}">{% trans "Home" %}</a>
                 </li>
                 <li>
-                    <a href=" /aled/">{% trans "Aled" %}</a>
+                    <a href="{% url 'home:aled' %}">{% trans "Aled" %}</a>
                 </li>
                 <li>
                     <a href="/oskour/">Oskour</a>
@@ -55,7 +55,6 @@
                 {% for lang in LANGUAGES %}
                 <form action="{% url 'set_language' %}" method="post">
                     {% csrf_token %}
-                    <input name="next" type="hidden" value="{{ redirect_to }}" />
                     <input name="language" type="hidden" value="{{ lang.0 }}" />
                     <button class="lang-select-wrapper-button" type="submit">{{ lang.1 }} ({{ lang.0 }})</button>
                 </form>
