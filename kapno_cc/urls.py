@@ -22,4 +22,5 @@ urlpatterns = i18n_patterns(
     path('i18n/', include('django.conf.urls.i18n')),
     path('django_kapnoc/', include('django_kapnoc.urls')),
     path('', include('home.urls')),
+    path('gallery/', include('gallery.urls')),
 )

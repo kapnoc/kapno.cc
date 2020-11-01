@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block 'contents' %}
+
+{% load i18n %}
+
+
+{% if parent %}
+
+<a href="{% url 'gallery:entry_pk' parent.pk %}">{{ parent.label }}</a>
+
+{% else %}
+
+<a href="{% url 'gallery:index'%}">{% trans "Gallery Home" %}</a>
+
+{% endif %}
+
+
+{% if prev %}
+
+<a href="{% url 'gallery:entry_pk' prev.pk %}">{{ prev.label }}</a>
+
+{% endif %}
+
+
+{% if elem %}
+
+{% for image in elem.image.all %}
+<img class="img-fluid" src="{% url 'django_kapnoc:image_by_name' image.name %}" alt="" />
+{% endfor %}
+
+{{ elem.label }}
+
+{% endif %}
+
+
+{% if next %}
+
+<a href="{% url 'gallery:entry_pk' next.pk %}">{{ next.label }}</a>
+
+{% endif %}
+
+
+<div class="d-flex flex-wrap justify-content-center">
+    {% for entry in entries %}
+
+    <a type="button" class="btn btn-outline-secondary" href="{% url 'gallery:entry_pk' entry.pk %}">
+        <div class="d-flex flex-column">
+            {% for image in entry.image.all %}
+            <img src="{% url 'django_kapnoc:thumbnail_by_name' image.name 'small_4_3' %}" alt="" />
+            {% endfor %}
+            {{ entry.label }}
+        </div>
+    </a>
+
+    {% endfor %}
+</div>
+
+{% endblock %}
