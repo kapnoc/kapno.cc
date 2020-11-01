@@ -3,6 +3,8 @@ db.sqlite3
 __pycache__
 .vscode
 
+media/
+credentials.json
 
 # should I ?
 

@@ -11,6 +11,14 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+import time
+
+from google.oauth2 import service_account
+from django.utils.translation import gettext_lazy
+import environ
+
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,12 +40,15 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'home',
+    'django_kapnoc',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'martor',
+    'easy_thumbnails',
 ]
 
 MIDDLEWARE = [
@@ -121,12 +132,67 @@ LOCALE_PATHS = (
     BASE_DIR / 'locale',
 )
 
+LANGUAGES = [
+    ('en', gettext_lazy('English')),
+    ('fr', gettext_lazy('French')),
+    ('fi', gettext_lazy('Finnish')),
+    ('sv', gettext_lazy('Swedish')),
+]
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'kapno_cc/static'
 ]
+
+if 'DATABASE_URL' in env:
+    DATABASES["default"] = env.db("DATABASE_URL")
+    DATABASES["default"]["ATOMIC_REQUESTS"] = True
+    DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)
+
+
+# Martor Markdown Editor
+MARTOR_THEME = 'bootstrap'
+
+MARTOR_ENABLE_CONFIGS = {
+    'emoji': 'true',  # to enable/disable emoji icons.
+    'imgur': 'true',  # to enable/disable imgur/custom uploader.
+    'mention': 'false',  # to enable/disable mention
+    'jquery': 'true',
+    # to include/revoke jquery (required for admin default django)
+    'living': 'true',  # to enable/disable live updates in preview
+    'spellcheck': 'false',  # to enable/disable spellcheck in form textareas
+    'hljs': 'true',  # to enable/disable hljs highlighting in preview
+}
+
+MARTOR_UPLOAD_URL = '/django_kapnoc/image/md_uploader/'  # change to local uploader
+
+MAX_IMAGE_UPLOAD_SIZE = 20971520  # 20MB
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = './media'
+
+
+# Google Cloud Storage
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+GS_BUCKET_NAME = 'kapno-cc-dev'
+GS_PROJECT_ID = 'kapno-cc'
+GS_FILE_OVERWRITE = False
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    "./credentials.json"
+)
+
+
+# Auto Thumbnail app
+THUMBNAIL_DEFAULT_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+THUMBNAIL_ALIASES = {
+    '': {
+        'small_square': {'size': (100, 100), 'crop': True},
+        'small_4_3': {'size': (120, 90), 'crop': True},
+    },
+}
