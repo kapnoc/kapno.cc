@@ -6,26 +6,37 @@
 
 
 
+<div class="row center-align hide-on-large-only">
+    <div class="col s12">
+        {% if parent %}
+        <a class="btn green darken-2"
+            href="{% url 'gallery:entry_pk' parent.pk %}">{% trans "Back: " %}{{ parent.label }}</a>
+        {% elif not at_gallery_home %}
+        <a class="btn green darken-2" href="{% url 'gallery:index'%}">{% trans "Back to Gallery Home" %}</a>
+        {% endif %}
+    </div>
+</div>
+
 <div class="row center-align">
-    <div class="col s4">
+    <div class="col l4 s6">
         {% if prev %}
-        <a class="btn green darken-2 flow-text"
+        <a class="btn green darken-2"
             href="{% url 'gallery:entry_pk' prev.pk %}">{% trans "Previous: " %}{{ prev.label }}</a>
         {% endif %}
     </div>
 
-    <div class="col s4">
+    <div class="col l4 hide-on-med-and-down">
         {% if parent %}
-        <a class="btn green darken-2 flow-text"
+        <a class="btn green darken-2"
             href="{% url 'gallery:entry_pk' parent.pk %}">{% trans "Back: " %}{{ parent.label }}</a>
         {% elif not at_gallery_home %}
-        <a class="btn green darken-2 flow-text" href="{% url 'gallery:index'%}">{% trans "Back to Gallery Home" %}</a>
+        <a class="btn green darken-2" href="{% url 'gallery:index'%}">{% trans "Back to Gallery Home" %}</a>
         {% endif %}
     </div>
 
-    <div class="col s4">
+    <div class="col l4 s6">
         {% if next %}
-        <a class="btn green darken-2 flow-text"
+        <a class="btn green darken-2"
             href="{% url 'gallery:entry_pk' next.pk %}">{% trans "Next: " %}{{ next.label }}</a>
         {% endif %}
     </div>
