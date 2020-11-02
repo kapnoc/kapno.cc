@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 import time
+import json
 
 from google.oauth2 import service_account
 from django.utils.translation import gettext_lazy
@@ -185,8 +186,8 @@ DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 GS_BUCKET_NAME = 'kapno-cc-dev'
 GS_PROJECT_ID = 'kapno-cc'
 GS_FILE_OVERWRITE = False
-GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
-    "./credentials.json"
+GS_CREDENTIALS = service_account.Credentials.from_service_account_info(
+    json.loads(env("GS_CREDENTIALS_JSON"))
 )
 
 
