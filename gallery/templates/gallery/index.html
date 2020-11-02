@@ -25,7 +25,7 @@
 
     <div class="col s4">
         {% if next %}
-        <a class="btn green darken-2 s2 flow-text"
+        <a class="btn green darken-2 flow-text"
             href="{% url 'gallery:entry_pk' next.pk %}">{% trans "Next: " %}{{ next.label }}</a>
         {% endif %}
     </div>
@@ -48,7 +48,7 @@
 
 <div class="row">
     {% for entry in entries %}
-    <div class="col s3">
+    <div class="col s6 m3">
         <a href="{% url 'gallery:entry_pk' entry.pk %}">
             <div class="card small">
                 <div class="card-image">

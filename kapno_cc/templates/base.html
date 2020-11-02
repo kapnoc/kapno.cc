@@ -1,6 +1,8 @@
 {% load static %}
 {% load i18n %}
 
+{% load emojiflag %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,28 +29,14 @@
 </head>
 
 <body>
-
+    <!-- grey darken-4
+        green darken-2 -->
 
     <header>
         <nav class="nav-extended grey darken-4">
             <div class="container">
                 <div class="nav-wrapper">
                     <a class="brand-logo center">kapno.cc</a>
-
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        {% get_available_languages as LANGUAGES %}
-                        {% for lang in LANGUAGES %}
-                        <li>
-                            <form action="{% url 'set_language' %}" method="post">
-                                {% csrf_token %}
-                                <input name="language" type="hidden" value="{{ lang.0 }}" />
-                                <button class="btn-flat nav-link white-text" type="submit">
-                                    {{ lang.0 }}
-                                </button>
-                            </form>
-                        </li>
-                        {% endfor %}
-                    </ul>
                 </div>
 
                 <div class="divider green darken-2"></div>
@@ -64,9 +52,6 @@
         </nav>
     </header>
 
-    <!-- grey darken-4
-        green darken-2 -->
-
     <main>
         <div class="container">
 
@@ -76,10 +61,34 @@
             {% endblock %}
 
         </div>
+        <div class="section"></div>
     </main>
 
     <footer class="page-footer grey darken-4">
         <div class="container">
+            <div class="row">
+                <div class="flex-wrap right">
+                    {% get_available_languages as LANGUAGES %}
+                    {% for lang in LANGUAGES %}
+                    <div class="flex-item">
+                        <form action="{% url 'set_language' %}" method="post">
+                            {% csrf_token %}
+                            <input name="language" type="hidden" value="{{ lang.0 }}" />
+                            <button class="btn-flat nav-link white-text" type="submit">
+                                {{ lang.0 }} {% emojiflag lang.0 %}
+                            </button>
+                        </form>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-copyright green darken-3">
+            <div class="container">
+                Made by Tanguy Gérôme
+                <a href="mailto://me@kapno.cc" class="right white-text">me@kapno.cc</a>
+            </div>
         </div>
     </footer>
 

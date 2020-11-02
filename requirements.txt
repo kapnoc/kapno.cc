@@ -9,5 +9,6 @@ easy-thumbnails
 psycopg2-binary
 gunicorn
 whitenoise
+emojiflag
 
 django-kapnoc==0.0.2

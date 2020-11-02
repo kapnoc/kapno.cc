@@ -40,6 +40,7 @@ ALLOWED_HOSTS = ['kapno.cc']
 # Application definition
 
 INSTALLED_APPS = [
+    'kapno_cc',
     'home',
     'gallery',
     'django_kapnoc',
