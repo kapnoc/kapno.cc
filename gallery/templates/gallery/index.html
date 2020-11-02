@@ -20,14 +20,14 @@
 <div class="row center-align">
     <div class="col l4 s6">
         {% if prev %}
-        <a class="btn green darken-2"
+        <a class="btn green darken-2 full-width"
             href="{% url 'gallery:entry_pk' prev.pk %}">{% trans "Previous: " %}{{ prev.label }}</a>
         {% endif %}
     </div>
 
     <div class="col l4 hide-on-med-and-down">
         {% if parent %}
-        <a class="btn green darken-2"
+        <a class="btn green darken-2 full-width"
             href="{% url 'gallery:entry_pk' parent.pk %}">{% trans "Back: " %}{{ parent.label }}</a>
         {% elif not at_gallery_home %}
         <a class="btn green darken-2" href="{% url 'gallery:index'%}">{% trans "Back to Gallery Home" %}</a>
@@ -36,7 +36,7 @@
 
     <div class="col l4 s6">
         {% if next %}
-        <a class="btn green darken-2"
+        <a class="btn green darken-2 full-width"
             href="{% url 'gallery:entry_pk' next.pk %}">{% trans "Next: " %}{{ next.label }}</a>
         {% endif %}
     </div>
