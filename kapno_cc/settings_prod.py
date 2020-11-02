@@ -183,7 +183,7 @@ MEDIA_ROOT = './media'
 
 # Google Cloud Storage
 DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-GS_BUCKET_NAME = 'kapno-cc-dev'
+GS_BUCKET_NAME = 'kapno-cc-prod'
 GS_PROJECT_ID = 'kapno-cc'
 GS_FILE_OVERWRITE = False
 GS_CREDENTIALS = service_account.Credentials.from_service_account_info(
