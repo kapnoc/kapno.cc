@@ -46,7 +46,11 @@
 {% if elem %}
 <div class="card">
     <div class="card-image">
-        <img class="img-fluid card-img-top" src="{{ elem.image.image.url }}" alt="" />
+        <a href="{{ elem.image.image.url }}">
+            {% with img=elem.image.image|thumbnailer %}
+            <img class="img-fluid card-img-top" src="{{ img.xlarge_4_3.url }}" alt="" />
+            {% endwith %}
+        </a>
         <span class="card-title">{{ elem.label }}</span>
     </div>
 
