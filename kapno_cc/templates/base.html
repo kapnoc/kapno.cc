@@ -12,61 +12,78 @@
     <link rel="icon" href="{% static 'favicon.ico' %}" />
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+        media="screen,projection" />
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 
     <link rel="stylesheet" href="{% static 'style/global.css' %}" />
-
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet" />
 </head>
 
 <body>
 
-    <div class="header-wrap">
-        <div class="header-title">
-            <h1>kapno.cc</h1>
-        </div>
-        <div class="navbar d-flex justify-content-center">
-            <a class="p-1" href="{% url 'home:index' %}">{% trans "Home" %}</a>
-            <a class="p-1" href="{% url 'gallery:index' %}">{% trans "Gallery" %}</a>
-        </div>
-    </div>
-    <div class="title-wrap">
-        <h2>{{title}}</h2>
-    </div>
 
-    <div class="contents-wrapper">
-        <div class="contents">
+    <header>
+        <nav class="nav-extended grey darken-4">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a class="brand-logo center">kapno.cc</a>
+
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        {% get_available_languages as LANGUAGES %}
+                        {% for lang in LANGUAGES %}
+                        <li>
+                            <form action="{% url 'set_language' %}" method="post">
+                                {% csrf_token %}
+                                <input name="language" type="hidden" value="{{ lang.0 }}" />
+                                <button class="btn-flat nav-link white-text" type="submit">
+                                    {{ lang.0 }}
+                                </button>
+                            </form>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="divider green darken-2"></div>
+                <div class="section"></div>
+
+                <div class="nav-content">
+                    <ul class="tabs tabs-transparent">
+                        <li><a class="nav-link" href="{% url 'home:index' %}">{% trans "Home" %}</a></li>
+                        <li><a class="nav-link" href="{% url 'gallery:index' %}">{% trans "Gallery" %}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- grey darken-4
+        green darken-2 -->
+
+    <main>
+        <div class="container">
+
+            <h5 class="center-align m2">{{title}}</h5>
+
             {% block 'contents' %}
             {% endblock %}
+
         </div>
-    </div>
+    </main>
 
-    <div class="footer">
-
-        <div class="lang-select-wrapper">
-            <ul>
-                {% get_available_languages as LANGUAGES %}
-                {% for lang in LANGUAGES %}
-                <form action="{% url 'set_language' %}" method="post">
-                    {% csrf_token %}
-                    <input name="language" type="hidden" value="{{ lang.0 }}" />
-                    <button class="lang-select-wrapper-button" type="submit">
-                        {{ lang.1 }} ({{ lang.0 }})
-                    </button>
-                </form>
-                {% endfor %}
-            </ul>
+    <footer class="page-footer grey darken-4">
+        <div class="container">
         </div>
-    </div>
+    </footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 </body>
 

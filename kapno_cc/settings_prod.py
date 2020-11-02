@@ -196,5 +196,7 @@ THUMBNAIL_ALIASES = {
     '': {
         'small_square': {'size': (100, 100), 'crop': True},
         'small_4_3': {'size': (120, 90), 'crop': True},
+        'medium_square': {'size': (300, 300), 'crop': True},
+        'medium_4_3': {'size': (360, 270), 'crop': True},
     },
 }

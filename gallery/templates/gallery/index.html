@@ -2,57 +2,70 @@
 {% block 'contents' %}
 
 {% load i18n %}
+{% load thumbnail %}
 
 
-{% if parent %}
 
-<a href="{% url 'gallery:entry_pk' parent.pk %}">{{ parent.label }}</a>
+<div class="row center-align">
+    <div class="col s4">
+        {% if prev %}
+        <a class="btn green darken-2 flow-text"
+            href="{% url 'gallery:entry_pk' prev.pk %}">{% trans "Previous: " %}{{ prev.label }}</a>
+        {% endif %}
+    </div>
 
-{% else %}
+    <div class="col s4">
+        {% if parent %}
+        <a class="btn green darken-2 flow-text"
+            href="{% url 'gallery:entry_pk' parent.pk %}">{% trans "Back: " %}{{ parent.label }}</a>
+        {% elif not at_gallery_home %}
+        <a class="btn green darken-2 flow-text" href="{% url 'gallery:index'%}">{% trans "Back to Gallery Home" %}</a>
+        {% endif %}
+    </div>
 
-<a href="{% url 'gallery:index'%}">{% trans "Gallery Home" %}</a>
-
-{% endif %}
-
-
-{% if prev %}
-
-<a href="{% url 'gallery:entry_pk' prev.pk %}">{{ prev.label }}</a>
-
-{% endif %}
+    <div class="col s4">
+        {% if next %}
+        <a class="btn green darken-2 s2 flow-text"
+            href="{% url 'gallery:entry_pk' next.pk %}">{% trans "Next: " %}{{ next.label }}</a>
+        {% endif %}
+    </div>
+</div>
 
 
 {% if elem %}
+<div class="card">
+    <div class="card-image">
+        <img class="img-fluid card-img-top" src="{{ elem.image.image.url }}" alt="" />
+        <span class="card-title">{{ elem.label }}</span>
+    </div>
 
-{% for image in elem.image.all %}
-<img class="img-fluid" src="{% url 'django_kapnoc:image_by_name' image.name %}" alt="" />
-{% endfor %}
-
-{{ elem.label }}
-
+    <div class="card-content">
+        <p>{{ elem.description }}</p>
+    </div>
+</div>
 {% endif %}
 
 
-{% if next %}
-
-<a href="{% url 'gallery:entry_pk' next.pk %}">{{ next.label }}</a>
-
-{% endif %}
-
-
-<div class="d-flex flex-wrap justify-content-center">
+<div class="row">
     {% for entry in entries %}
+    <div class="col s3">
+        <a href="{% url 'gallery:entry_pk' entry.pk %}">
+            <div class="card small">
+                <div class="card-image">
+                    {% with img=entry.image.image|thumbnailer %}
+                    <img class="img-fluid card-img-top" src="{{ img.medium_4_3.url }}" alt="" />
+                    {% endwith %}
+                    <span class="card-title">{{ entry.label }}</span>
+                </div>
 
-    <a type="button" class="btn btn-outline-secondary" href="{% url 'gallery:entry_pk' entry.pk %}">
-        <div class="d-flex flex-column">
-            {% for image in entry.image.all %}
-            <img src="{% url 'django_kapnoc:thumbnail_by_name' image.name 'small_4_3' %}" alt="" />
-            {% endfor %}
-            {{ entry.label }}
-        </div>
-    </a>
-
+                <div class="card-content">
+                    <p>{{ entry.description }}</p>
+                </div>
+            </div>
+        </a>
+    </div>
     {% endfor %}
 </div>
+
 
 {% endblock %}

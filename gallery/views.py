@@ -12,6 +12,7 @@ def index(request):
     entries = GalleryEntry.objects.filter(parent=None)[:]
     context = {
         'title': _('Gallery'),
+        'at_gallery_home': True,
         'entries': entries,
     }
     return render(request, 'gallery/index.html', context)
