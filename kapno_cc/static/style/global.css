@@ -9,8 +9,11 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
 
-.btn { text-transform: none; }
-.btn-flat { text-transform: none; }
+.btn, .btn-flat {
+    height: auto !important;
+    text-transform: none;
+}
+
 
 .flex-wrap {
     display: flex;
