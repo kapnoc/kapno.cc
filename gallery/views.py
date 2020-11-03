@@ -9,7 +9,8 @@ from .models import GalleryEntry
 
 
 def index(request):
-    entries = GalleryEntry.objects.filter(parent=None)[:]
+    entries = GalleryEntry.objects.filter(
+        parent=None).order_by('-created_at')[:]
     context = {
         'title': _('Gallery'),
         'at_gallery_home': True,
@@ -25,7 +26,7 @@ def entry_pk(request, pk):
         elem = GalleryEntry.objects.get(pk=pk)
     except ObjectDoesNotExist:
         raise Http404(_('Gallery element does not exist'))
-    entries = GalleryEntry.objects.filter(parent=pk)
+    entries = GalleryEntry.objects.filter(parent=pk).order_by('-created_at')
     if entries.count() == 0:
         pass
     try:
