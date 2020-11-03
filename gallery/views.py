@@ -36,6 +36,8 @@ def entry_pk(request, pk):
         next = elem.get_next_by_created_at(parent=elem.parent)
     except ObjectDoesNotExist:
         next = None
+    # switch next and prev as display order makes more sense
+    prev, next = next, prev
     context = {
         'title': _('Gallery') + ' - ' + elem.label,
         'elem': elem,
