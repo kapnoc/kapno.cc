@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.core.exceptions import ObjectDoesNotExist
 
-from django_kapnoc.models import Tag
+from kapno_cc.models import Tag
 from .models import KitchenPage
 
 
