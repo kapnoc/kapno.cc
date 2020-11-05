@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-02 19:57+0000\n"
+"POT-Creation-Date: 2020-11-05 12:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,46 +18,64 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: gallery/templates/gallery/index.html:13
-msgid "Previous: "
+#: blog/templates/blog/index.html:6 kitchen/templates/kitchen/index.html:6
+msgid "Categories: "
 msgstr ""
 
-#: gallery/templates/gallery/index.html:20
+#: blog/templates/blog/index.html:17 kitchen/templates/kitchen/index.html:17
+msgid "Pages: "
+msgstr ""
+
+#: gallery/templates/gallery/index.html:12
+#: gallery/templates/gallery/index.html:30
 msgid "Back: "
 msgstr ""
 
-#: gallery/templates/gallery/index.html:22
+#: gallery/templates/gallery/index.html:14
+#: gallery/templates/gallery/index.html:32
 msgid "Back to Gallery Home"
 msgstr ""
 
-#: gallery/templates/gallery/index.html:29
+#: gallery/templates/gallery/index.html:23
+msgid "Previous: "
+msgstr ""
+
+#: gallery/templates/gallery/index.html:39
 msgid "Next: "
 msgstr ""
 
-#: gallery/views.py:14 gallery/views.py:40 kapno_cc/templates/base.html:48
+#: gallery/views.py:15 gallery/views.py:43 kapno_cc/templates/base.html:48
 msgid "Gallery"
 msgstr ""
 
-#: gallery/views.py:27
+#: gallery/views.py:28
 msgid "Gallery element does not exist"
 msgstr ""
 
-#: home/views.py:8 kapno_cc/templates/base.html:47
+#: home/views.py:11 kapno_cc/templates/base.html:47
 msgid "Home"
 msgstr "Home"
 
-#: kapno_cc/settings.py:139 kapno_cc/settings_prod.py:141
+#: kapno_cc/settings.py:141 kapno_cc/settings_prod.py:143
 msgid "English"
 msgstr ""
 
-#: kapno_cc/settings.py:140 kapno_cc/settings_prod.py:142
+#: kapno_cc/settings.py:142 kapno_cc/settings_prod.py:144
 msgid "French"
 msgstr ""
 
-#: kapno_cc/settings.py:141 kapno_cc/settings_prod.py:143
+#: kapno_cc/settings.py:143 kapno_cc/settings_prod.py:145
 msgid "Finnish"
 msgstr ""
 
-#: kapno_cc/settings.py:142 kapno_cc/settings_prod.py:144
+#: kapno_cc/settings.py:144 kapno_cc/settings_prod.py:146
 msgid "Swedish"
+msgstr ""
+
+#: kapno_cc/templates/base.html:49
+msgid "Blog"
+msgstr ""
+
+#: kapno_cc/templates/base.html:50
+msgid "Kitchen"
 msgstr ""

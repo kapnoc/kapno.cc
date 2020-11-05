@@ -23,4 +23,6 @@ urlpatterns = i18n_patterns(
     path('django_kapnoc/', include('django_kapnoc.urls')),
     path('', include('home.urls')),
     path('gallery/', include('gallery.urls')),
+    path('blog/', include('blog.urls')),
+    path('kitchen/', include('kitchen.urls')),
 )

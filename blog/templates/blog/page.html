@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block 'contents' %}
 
-
 {% load martortags %}
 {% load static %}
 
@@ -11,10 +10,7 @@
 {% endblock %}
 
 <div class="martor-preview">
-    {% for page in pages %}
     {{ page.body|safe_markdown }}
-    {% endfor %}
 </div>
-
 
 {% endblock %}

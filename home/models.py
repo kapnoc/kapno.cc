@@ -1,3 +1,9 @@
 from django.db import models
 
-# Create your models here.
+
+from django_kapnoc.models import MarkdownPage
+
+
+class HomePage(MarkdownPage):
+    class Meta:
+        app_label = 'home'

@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'kapno_cc',
     'home',
     'gallery',
+    'blog',
+    'kitchen',
     'django_kapnoc',
     'django.contrib.admin',
     'django.contrib.auth',

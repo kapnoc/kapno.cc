@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block 'contents' %}
+
+{% load i18n %}
+
+<h5>{% trans 'Categories: ' %}</h5>
+<div class="row">
+    {% for tag in tags %}
+    <a class="btn green darken-2" href="{% url 'blog:tag_pk' pk=tag.pk %}">
+        {{ tag.name }}
+    </a>
+    {% endfor %}
+</div>
+
+<hr />
+
+<h5>{% trans 'Pages: ' %}</h5>
+<div class="row">
+    {% for page in pages %}
+    <div class="col s6 m3">
+        <a href="{% url 'blog:page' pk=page.pk %}">
+            <div class="card small">
+                <div class="card-content grey-text text-darken-4">
+                    <span class="card-title green-text text-darken-2">{{ page.title }}</span>
+                    <p>{{ page.description }}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
