@@ -25,4 +25,6 @@ urlpatterns = i18n_patterns(
     path('gallery/', include('gallery.urls')),
     path('blog/', include('blog.urls')),
     path('kitchen/', include('kitchen.urls')),
-)
+) + [
+    path('martor/', include('martor.urls')),
+]

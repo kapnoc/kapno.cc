@@ -39,7 +39,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'kapno_cc',
     'home',
+    'gallery',
+    'blog',
+    'kitchen',
     'django_kapnoc',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'modeltranslation',
     'martor',
     'easy_thumbnails',
 ]
@@ -177,6 +182,11 @@ MAX_IMAGE_UPLOAD_SIZE = 20971520  # 20MB
 MEDIA_URL = '/media/'
 MEDIA_ROOT = './media'
 
+MARTOR_MARKDOWNIFY_FUNCTION = 'martor.utils.markdownify'  # default
+MARTOR_MARKDOWNIFY_URL = '/martor/markdownify/'  # default
+
+MARTOR_ENABLE_LABEL = True
+
 
 # Google Cloud Storage
 DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
@@ -194,5 +204,9 @@ THUMBNAIL_ALIASES = {
     '': {
         'small_square': {'size': (100, 100), 'crop': True},
         'small_4_3': {'size': (120, 90), 'crop': True},
+        'medium_square': {'size': (300, 300), 'crop': True},
+        'medium_4_3': {'size': (360, 270), 'crop': True},
+        'xlarge_square': {'size': (1000, 1000), 'crop': True},
+        'xlarge_4_3': {'size': (1200, 900), 'crop': True},
     },
 }

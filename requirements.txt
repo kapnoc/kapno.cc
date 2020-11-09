@@ -12,4 +12,4 @@ whitenoise
 emojiflag
 django-modeltranslation
 
-django-kapnoc==0.0.2
+django-kapnoc==0.0.4

@@ -184,6 +184,11 @@ MAX_IMAGE_UPLOAD_SIZE = 20971520  # 20MB
 MEDIA_URL = '/media/'
 MEDIA_ROOT = './media'
 
+MARTOR_MARKDOWNIFY_FUNCTION = 'martor.utils.markdownify'  # default
+MARTOR_MARKDOWNIFY_URL = '/martor/markdownify/'  # default
+
+MARTOR_ENABLE_LABEL = True
+
 
 # Google Cloud Storage
 DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
