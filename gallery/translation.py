@@ -4,4 +4,4 @@ from .models import GalleryEntry
 
 @register(GalleryEntry)
 class GalleryEntryTranslationOptions(TranslationOptions):
-    fields = ('label', 'description',)
+    fields = ('name', 'description',)

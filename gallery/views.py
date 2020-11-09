@@ -40,7 +40,7 @@ def entry_pk(request, pk):
     # switch next and prev as display order makes more sense
     prev, next = next, prev
     context = {
-        'title': _('Gallery') + ' - ' + elem.label,
+        'title': _('Gallery') + ' - ' + elem.name,
         'elem': elem,
         'parent': elem.parent,
         'prev': prev,

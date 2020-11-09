@@ -9,7 +9,7 @@
     <div class="col s12">
         {% if parent %}
         <a class="btn green darken-2"
-            href="{% url 'gallery:entry_pk' parent.pk %}">{% trans "Back: " %}{{ parent.label }}</a>
+            href="{% url 'gallery:entry_pk' parent.pk %}">{% trans "Back: " %}{{ parent.name }}</a>
         {% elif not at_gallery_home %}
         <a class="btn green darken-2" href="{% url 'gallery:index'%}">{% trans "Back to Gallery Home" %}</a>
         {% endif %}
@@ -20,14 +20,14 @@
     <div class="col l4 s6">
         {% if prev %}
         <a class="btn green darken-2 full-width"
-            href="{% url 'gallery:entry_pk' prev.pk %}">{% trans "Previous: " %}{{ prev.label }}</a>
+            href="{% url 'gallery:entry_pk' prev.pk %}">{% trans "Previous: " %}{{ prev.name }}</a>
         {% endif %}
     </div>
 
     <div class="col l4 hide-on-med-and-down">
         {% if parent %}
         <a class="btn green darken-2 full-width"
-            href="{% url 'gallery:entry_pk' parent.pk %}">{% trans "Back: " %}{{ parent.label }}</a>
+            href="{% url 'gallery:entry_pk' parent.pk %}">{% trans "Back: " %}{{ parent.name }}</a>
         {% elif not at_gallery_home %}
         <a class="btn green darken-2 full-width" href="{% url 'gallery:index'%}">{% trans "Back to Gallery Home" %}</a>
         {% endif %}
@@ -36,7 +36,7 @@
     <div class="col l4 s6">
         {% if next %}
         <a class="btn green darken-2 full-width"
-            href="{% url 'gallery:entry_pk' next.pk %}">{% trans "Next: " %}{{ next.label }}</a>
+            href="{% url 'gallery:entry_pk' next.pk %}">{% trans "Next: " %}{{ next.name }}</a>
         {% endif %}
     </div>
 </div>
@@ -50,10 +50,10 @@
             <img class="img-fluid card-img-top" src="{{ img.xlarge_4_3.url }}" alt="" />
             {% endwith %}
         </a>
-        <span class="card-title">{{ elem.label }}</span>
     </div>
 
     <div class="card-content">
+        <span class="card-title green-text text-darken-2">{{  elem.image.name_unique }}</span>
         <p>{{ elem.description }}</p>
     </div>
 </div>
@@ -69,10 +69,14 @@
                     {% with img=entry.image.image|thumbnailer %}
                     <img class="img-fluid card-img-top" src="{{ img.medium_4_3.url }}" alt="" />
                     {% endwith %}
-                    <span class="card-title">{{ entry.label }}</span>
                 </div>
 
                 <div class="card-content grey-text text-darken-4">
+                    {% if entry.child_count == 0 %}
+                    <span class="card-title green-text text-darken-2">{{ elem.image.name_unique }}</span>
+                    {% else %}
+                    <span class="card-title green-text text-darken-2">{{ entry.name }}</span>
+                    {% endif %}
                     <p>{{ entry.description }}</p>
                 </div>
             </div>
