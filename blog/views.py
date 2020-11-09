@@ -55,7 +55,7 @@ def tag_name(request, name):
 
 def page(request, pk):
     try:
-        page = BlogPage.objects.get(pk=int(pk))
+        page = BlogPage.objects.get(pk=pk)
     except ObjectDoesNotExist:
         raise Http404("Page does not exist")
     context = {
