@@ -52,8 +52,11 @@
         </a>
     </div>
 
-    <div class="card-content">
-        <span class="card-title green-text text-darken-2">{{  elem.image.name_unique }}</span>
+    <div class="card-content grey-text text-darken-4">
+        <span class="card-title green-text text-darken-2">{{ elem.name }}</span>
+        {% if elem.child_count == 0 %}
+        <p>({{ elem.image.name_unique }})</p>
+        {% endif %}
         <p>{{ elem.description }}</p>
     </div>
 </div>
@@ -72,10 +75,9 @@
                 </div>
 
                 <div class="card-content grey-text text-darken-4">
-                    {% if entry.child_count == 0 %}
-                    <span class="card-title green-text text-darken-2">{{ elem.image.name_unique }}</span>
-                    {% else %}
                     <span class="card-title green-text text-darken-2">{{ entry.name }}</span>
+                    {% if entry.child_count == 0 %}
+                    <p>({{ elem.image.name_unique }})</p>
                     {% endif %}
                     <p>{{ entry.description }}</p>
                 </div>
