@@ -20,11 +20,11 @@ msgstr ""
 
 #: blog/templates/blog/index.html:6 kitchen/templates/kitchen/index.html:6
 msgid "Categories: "
-msgstr ""
+msgstr "Catégories : "
 
 #: blog/templates/blog/index.html:17 kitchen/templates/kitchen/index.html:17
 msgid "Pages: "
-msgstr ""
+msgstr "Pages : "
 
 #: gallery/templates/gallery/index.html:12
 #: gallery/templates/gallery/index.html:30
@@ -74,8 +74,8 @@ msgstr ""
 
 #: kapno_cc/templates/base.html:49
 msgid "Blog"
-msgstr ""
+msgstr "Blog"
 
 #: kapno_cc/templates/base.html:50
 msgid "Kitchen"
-msgstr ""
+msgstr "Cuisine"

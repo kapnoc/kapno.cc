@@ -20,11 +20,11 @@ msgstr ""
 
 #: blog/templates/blog/index.html:6 kitchen/templates/kitchen/index.html:6
 msgid "Categories: "
-msgstr ""
+msgstr "Kategorier:"
 
 #: blog/templates/blog/index.html:17 kitchen/templates/kitchen/index.html:17
 msgid "Pages: "
-msgstr ""
+msgstr "Sidor: "
 
 #: gallery/templates/gallery/index.html:12
 #: gallery/templates/gallery/index.html:30
@@ -34,19 +34,19 @@ msgstr ""
 #: gallery/templates/gallery/index.html:14
 #: gallery/templates/gallery/index.html:32
 msgid "Back to Gallery Home"
-msgstr ""
+msgstr "Tillbaka till galleriets hem"
 
 #: gallery/templates/gallery/index.html:23
 msgid "Previous: "
-msgstr ""
+msgstr "Förra: "
 
 #: gallery/templates/gallery/index.html:39
 msgid "Next: "
-msgstr ""
+msgstr "Nästa: "
 
 #: gallery/views.py:15 gallery/views.py:43 kapno_cc/templates/base.html:48
 msgid "Gallery"
-msgstr ""
+msgstr "Galleri"
 
 #: gallery/views.py:28
 msgid "Gallery element does not exist"
@@ -74,8 +74,8 @@ msgstr ""
 
 #: kapno_cc/templates/base.html:49
 msgid "Blog"
-msgstr ""
+msgstr "Blogg"
 
 #: kapno_cc/templates/base.html:50
 msgid "Kitchen"
-msgstr ""
+msgstr "Kök"
