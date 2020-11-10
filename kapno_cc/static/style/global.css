@@ -45,6 +45,10 @@ a.nav-link {
 }
 
 
+.footer-link {
+    padding-left: 20px;
+}
+
 /*
  *  make footer stick to the bottom (but not fixed)
  */
