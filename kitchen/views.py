@@ -30,7 +30,7 @@ def tag_pk(request, pk):
     )[:]
     pages = KitchenPage.objects.all().filter(tags__pk=queried_tag.pk)[:]
     context = {
-        'title': f'{_(Kitchen)} - {queried_tag.name}',
+        'title': f'{_("Kitchen")} - {queried_tag.name}',
         'tags': tags,
         'pages': pages,
     }
@@ -47,7 +47,7 @@ def tag_name(request, name):
     )[:]
     pages = KitchenPage.objects.all().filter(tags__pk=queried_tag.pk)[:]
     context = {
-        'title': f'{_(Kitchen)} - {queried_tag.name}',
+        'title': f'{_("Kitchen")} - {queried_tag.name}',
         'tags': tags,
         'pages': pages,
     }
@@ -60,7 +60,7 @@ def page(request, pk):
     except ObjectDoesNotExist:
         raise Http404("Page does not exist")
     context = {
-        'title': f'{_(Kitchen)} - {page.title}',
+        'title': f'{_("Kitchen")} - {page.title}',
         'page': page,
     }
     return render(request, 'kitchen/page.html', context)
