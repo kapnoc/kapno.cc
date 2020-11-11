@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-05 12:48+0000\n"
+"POT-Creation-Date: 2020-11-11 13:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,7 +44,7 @@ msgstr ""
 msgid "Next: "
 msgstr ""
 
-#: gallery/views.py:15 gallery/views.py:43 kapno_cc/templates/base.html:48
+#: gallery/views.py:15 gallery/views.py:43 kapno_cc/templates/base.html:54
 msgid "Gallery"
 msgstr ""
 
@@ -52,7 +52,7 @@ msgstr ""
 msgid "Gallery element does not exist"
 msgstr ""
 
-#: home/views.py:11 kapno_cc/templates/base.html:47
+#: home/views.py:11 kapno_cc/templates/base.html:53
 msgid "Home"
 msgstr "Home"
 
@@ -72,10 +72,10 @@ msgstr ""
 msgid "Swedish"
 msgstr ""
 
-#: kapno_cc/templates/base.html:49
+#: kapno_cc/templates/base.html:55
 msgid "Blog"
 msgstr ""
 
-#: kapno_cc/templates/base.html:50
+#: kapno_cc/templates/base.html:56 kitchen/views.py:16
 msgid "Kitchen"
 msgstr ""

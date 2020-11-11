@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.core.exceptions import ObjectDoesNotExist
+from django.utils.translation import gettext as _
 
 from blog.models import Tag
 from .models import KitchenPage
@@ -12,7 +13,7 @@ def index(request):
     )[:]
     pages = KitchenPage.objects.all()[:]
     context = {
-        'title': 'Kitchen',
+        'title': _('Kitchen'),
         'tags': tags,
         'pages': pages,
     }
@@ -29,7 +30,7 @@ def tag_pk(request, pk):
     )[:]
     pages = KitchenPage.objects.all().filter(tags__pk=queried_tag.pk)[:]
     context = {
-        'title': f'Kitchen - {queried_tag.name}',
+        'title': f'{_(Kitchen)} - {queried_tag.name}',
         'tags': tags,
         'pages': pages,
     }
@@ -46,7 +47,7 @@ def tag_name(request, name):
     )[:]
     pages = KitchenPage.objects.all().filter(tags__pk=queried_tag.pk)[:]
     context = {
-        'title': f'Kitchen - {queried_tag.name}',
+        'title': f'{_(Kitchen)} - {queried_tag.name}',
         'tags': tags,
         'pages': pages,
     }
@@ -59,7 +60,7 @@ def page(request, pk):
     except ObjectDoesNotExist:
         raise Http404("Page does not exist")
     context = {
-        'title': f'Kitchen - {page.title}',
+        'title': f'{_(Kitchen)} - {page.title}',
         'page': page,
     }
     return render(request, 'kitchen/page.html', context)
