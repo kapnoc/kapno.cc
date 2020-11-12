@@ -210,5 +210,6 @@ THUMBNAIL_ALIASES = {
         'medium_4_3': {'size': (360, 270), 'crop': True},
         'xlarge_square': {'size': (1000, 1000), 'crop': True},
         'xlarge_4_3': {'size': (1200, 900), 'crop': True},
+        'xlarge_3_1': {'size': (1200, 400), 'crop': True},
     },
 }
