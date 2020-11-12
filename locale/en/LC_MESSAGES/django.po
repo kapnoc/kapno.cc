@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-11 13:14+0000\n"
+"POT-Creation-Date: 2020-11-12 10:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,6 +24,10 @@ msgstr ""
 
 #: blog/templates/blog/index.html:17 kitchen/templates/kitchen/index.html:17
 msgid "Pages: "
+msgstr ""
+
+#: blog/views.py:16 kapno_cc/templates/base.html:55
+msgid "Blog"
 msgstr ""
 
 #: gallery/templates/gallery/index.html:12
@@ -70,10 +74,6 @@ msgstr ""
 
 #: kapno_cc/settings.py:144 kapno_cc/settings_prod.py:146
 msgid "Swedish"
-msgstr ""
-
-#: kapno_cc/templates/base.html:55
-msgid "Blog"
 msgstr ""
 
 #: kapno_cc/templates/base.html:56 kitchen/views.py:16
