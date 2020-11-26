@@ -9,11 +9,20 @@ from .models import GalleryEntry
 
 
 def index(request):
-    entries = GalleryEntry.objects.filter(
-        parent=None).order_by('-created_at')[:]
+    all_entries = GalleryEntry.objects.filter(
+        parent=None
+    ).order_by('-created_at')
+    folders = []
+    entries = []
+    for entry in all_entries:
+        if entry.galleryentry_set.count() != 0:
+            folders.append(entry)
+        else:
+            entries.append(entry)
     context = {
         'title': _('Gallery'),
         'at_gallery_home': True,
+        'folders': folders,
         'entries': entries,
     }
     return render(request, 'gallery/index.html', context)
@@ -26,8 +35,17 @@ def entry_pk(request, pk):
         elem = GalleryEntry.objects.get(pk=pk)
     except ObjectDoesNotExist:
         raise Http404(_('Gallery element does not exist'))
-    entries = GalleryEntry.objects.filter(parent=pk).order_by('-created_at')
-    if entries.count() == 0:
+    all_entries = GalleryEntry.objects.filter(
+        parent=pk
+    ).order_by('-created_at')
+    folders = []
+    entries = []
+    for entry in all_entries:
+        if entry.galleryentry_set.count() != 0:
+            folders.append(entry)
+        else:
+            entries.append(entry)
+    if len(entries) == 0:
         pass
     try:
         prev = elem.get_previous_by_created_at(parent=elem.parent)
@@ -45,6 +63,7 @@ def entry_pk(request, pk):
         'parent': elem.parent,
         'prev': prev,
         'next': next,
+        'folders': folders,
         'entries': entries,
     }
     return render(request, 'gallery/index.html', context)

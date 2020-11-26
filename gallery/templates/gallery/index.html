@@ -63,6 +63,35 @@
 {% endif %}
 
 
+{% if folders %}
+<h5>{% trans "Categories: " %}</h5>
+<div class="row">
+    {% for entry in folders %}
+    <div class="col s6 m3">
+        <a href="{% url 'gallery:entry_pk' entry.pk %}">
+            <div class="card small">
+                <div class="card-image">
+                    {% with img=entry.image.image|thumbnailer %}
+                    <img class="img-fluid card-img-top" src="{{ img.medium_4_3.url }}" alt="" />
+                    {% endwith %}
+                </div>
+
+                <div class="card-content grey-text text-darken-4">
+                    <span class="card-title green-text text-darken-2">{{ entry.name }}</span>
+                    {% if entry.child_count == 0 %}
+                    <p>({{ entry.image.name_unique }})</p>
+                    {% endif %}
+                    <p>{{ entry.description }}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if entries %}
+<h5>{% trans "Pictures: " %}</h5>
 <div class="row">
     {% for entry in entries %}
     <div class="col s6 m3">
@@ -86,6 +115,7 @@
     </div>
     {% endfor %}
 </div>
+{% endif %}
 
 
 {% endblock %}

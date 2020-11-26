@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-12 10:58+0000\n"
+"POT-Creation-Date: 2020-11-26 21:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: blog/templates/blog/index.html:6 kitchen/templates/kitchen/index.html:6
+#: blog/templates/blog/index.html:6 gallery/templates/gallery/index.html:67
+#: kitchen/templates/kitchen/index.html:6
 msgid "Categories: "
 msgstr "Catégories : "
 
@@ -48,11 +49,15 @@ msgstr "Précédent : "
 msgid "Next: "
 msgstr "Suivant : "
 
-#: gallery/views.py:15 gallery/views.py:43 kapno_cc/templates/base.html:54
-msgid "Gallery"
-msgstr "Gallerie"
+#: gallery/templates/gallery/index.html:94
+msgid "Pictures: "
+msgstr "Images : "
 
-#: gallery/views.py:28
+#: gallery/views.py:23 gallery/views.py:61 kapno_cc/templates/base.html:54
+msgid "Gallery"
+msgstr "Galerie"
+
+#: gallery/views.py:37
 msgid "Gallery element does not exist"
 msgstr ""
 
