@@ -40,12 +40,12 @@ ALLOWED_HOSTS = ['kapno.cc']
 # Application definition
 
 INSTALLED_APPS = [
+    'django_kapnoc',
     'kapno_cc',
     'home',
     'gallery',
     'blog',
     'kitchen',
-    'django_kapnoc',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -204,6 +204,7 @@ GS_CREDENTIALS = service_account.Credentials.from_service_account_info(
 THUMBNAIL_DEFAULT_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 THUMBNAIL_ALIASES = {
     '': {
+        'admin_small': {'size': (100, 75), 'crop': True},
         'small_square': {'size': (100, 100), 'crop': True},
         'small_4_3': {'size': (120, 90), 'crop': True},
         'medium_square': {'size': (300, 300), 'crop': True},
