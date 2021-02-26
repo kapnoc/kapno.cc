@@ -32,7 +32,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['kapno.cc']
 
@@ -172,7 +172,8 @@ MARTOR_THEME = 'bootstrap'
 
 MARTOR_ENABLE_CONFIGS = {
     'emoji': 'true',  # to enable/disable emoji icons.
-    'imgur': 'true',  # to enable/disable imgur/custom uploader.
+    'imgur': 'false',  # to enable/disable imgur/custom uploader.
+    # 'imgur': 'true',  # to enable/disable imgur/custom uploader.
     'mention': 'false',  # to enable/disable mention
     'jquery': 'true',
     # to include/revoke jquery (required for admin default django)
