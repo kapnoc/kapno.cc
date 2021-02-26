@@ -20,11 +20,11 @@ from django.conf.urls.i18n import i18n_patterns
 urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     path('i18n/', include('django.conf.urls.i18n')),
-    path('django_kapnoc/', include('django_kapnoc.urls')),
     path('', include('home.urls')),
     path('gallery/', include('gallery.urls')),
     path('blog/', include('blog.urls')),
     path('kitchen/', include('kitchen.urls')),
 ) + [
     path('martor/', include('martor.urls')),
+    path('photologue/', include('photologue.urls', namespace='photologue')),
 ]

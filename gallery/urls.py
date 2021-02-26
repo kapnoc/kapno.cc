@@ -1,9 +1,11 @@
 from django.urls import path
-
-from . import views
+from .views import NewGalleryListView, NewGalleryDetailView, NewPhotoDetailView
 
 app_name = "gallery"
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('entry/<int:pk>', views.entry_pk, name='entry_pk'),
+    path('', NewGalleryListView.as_view(), name='gallery-list'),
+    path('category/<slug:slug>', NewGalleryDetailView.as_view(),
+         name='gallery-detail'),
+    path('photo/<slug:slug>', NewPhotoDetailView.as_view(),
+         name='photo-detail'),
 ]

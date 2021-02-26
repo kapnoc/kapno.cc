@@ -1,66 +1,39 @@
-from django.shortcuts import render
-from django.http import HttpResponse, Http404
-from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import gettext as _
+from django.views.generic import ListView, DetailView
+from django.shortcuts import get_object_or_404
 
-from blog.models import Tag
+from utils.models import Tag
 from .models import BlogPage
 
 
-def index(request):
-    tags = Tag.objects.filter(
-        blogpage__isnull=False,
-    )[:]
-    pages = BlogPage.objects.all()[:]
-    context = {
-        'title': _('Blog'),
-        'tags': tags,
-        'pages': pages,
-    }
-    return render(request, 'blog/index.html', context)
+class BlogPageListView(ListView):
+    model = BlogPage
+    template_name = 'blog/blogpage-list.html'
+
+    def get_queryset(self):
+        if self.kwargs.get('tag', None):
+            self.tag = get_object_or_404(Tag, name=self.kwargs['tag'])
+            return self.tag.blogpage_set.all()
+        else:
+            self.tag = None
+            return BlogPage.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        tags = Tag.objects.filter(
+            blogpage__isnull=False,
+        )[:]
+        context['title'] = f"{_('Blog')}"
+        context['tags'] = tags
+        return context
 
 
-def tag_pk(request, pk):
-    try:
-        queried_tag = Tag.objects.get(pk=pk)
-    except ObjectDoesNotExist:
-        raise Http404("Tag does not exist")
-    tags = Tag.objects.filter(
-        blogpage__isnull=False,
-    )[:]
-    pages = BlogPage.objects.all().filter(tags__pk=queried_tag.pk)[:]
-    context = {
-        'title': f'{_("Blog")} - {queried_tag.name}',
-        'tags': tags,
-        'pages': pages,
-    }
-    return render(request, 'blog/index.html', context)
+class BlogPageDetailView(DetailView):
+    model = BlogPage
+    template_name = 'blog/blogpage-detail.html'
+    slug_field = 'pk'
 
-
-def tag_name(request, name):
-    try:
-        queried_tag = Tag.objects.get(name=name)
-    except ObjectDoesNotExist:
-        raise Http404("Tag does not exist")
-    tags = Tag.objects.filter(
-        blogpage__isnull=False,
-    )[:]
-    pages = BlogPage.objects.all().filter(tags__pk=queried_tag.pk)[:]
-    context = {
-        'title': f'{_("Blog")} - {queried_tag.name}',
-        'tags': tags,
-        'pages': pages,
-    }
-    return render(request, 'blog/index.html', context)
-
-
-def page(request, pk):
-    try:
-        page = BlogPage.objects.get(pk=pk)
-    except ObjectDoesNotExist:
-        raise Http404("Page does not exist")
-    context = {
-        'title': f'{_("Blog")} - {page.title}',
-        'page': page,
-    }
-    return render(request, 'blog/page.html', context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = f"{self.object.title} - {_('Blog')}"
+        return context

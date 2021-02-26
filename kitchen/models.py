@@ -1,7 +1,6 @@
 from django.db import models
 
-from django_kapnoc.models import MarkdownPage
-from blog.models import Tag
+from utils.models import Tag, MarkdownPage
 
 
 class KitchenPage(MarkdownPage):
@@ -9,4 +8,4 @@ class KitchenPage(MarkdownPage):
     tags = models.ManyToManyField(Tag)
 
     class Meta:
-        app_label = 'blog'
+        app_label = 'kitchen'

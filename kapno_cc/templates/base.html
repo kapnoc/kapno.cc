@@ -51,7 +51,7 @@
                 <div class="nav-content">
                     <ul class="tabs tabs-transparent">
                         <li><a class="nav-link" href="{% url 'home:index' %}">{% trans "Home" %}</a></li>
-                        <li><a class="nav-link" href="{% url 'gallery:index' %}">{% trans "Gallery" %}</a></li>
+                        <li><a class="nav-link" href="{% url 'gallery:gallery-list' %}">{% trans "Gallery" %}</a></li>
                         <li><a class="nav-link" href="{% url 'blog:index' %}">{% trans "Blog" %}</a></li>
                         <li><a class="nav-link" href="{% url 'kitchen:index' %}">{% trans "Kitchen" %}</a></li>
                     </ul>
@@ -66,6 +66,9 @@
             <h3 class="center-align m2">{{title}}</h3>
 
             {% block 'contents' %}
+            {% endblock %}
+
+            {% block content %}
             {% endblock %}
 
         </div>

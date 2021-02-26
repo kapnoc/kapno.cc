@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block 'contents' %}
+
+{% load i18n %}
+
+<h5>{% trans "Pictures: " %}</h5>
+<div class="row">
+    {% for photo in gallery.photos.all %}
+    <div class="col s6 m3">
+        <a href="{% url 'gallery:photo-detail' photo.slug %}">
+            <div class="card small">
+                <div class="card-image">
+                    <img class="img-fluid card-img-top" src="{{ photo.get_thumbnail_url }}" alt="{{ photo.caption }}" />
+                </div>
+
+                <div class="card-content grey-text text-darken-4">
+                    <span class="card-title green-text text-darken-2">{{ photo.title }}</span>
+                    <p>{{ photo.caption }}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

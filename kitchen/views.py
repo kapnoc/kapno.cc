@@ -1,66 +1,39 @@
-from django.shortcuts import render
-from django.http import HttpResponse, Http404
-from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import gettext as _
+from django.views.generic import ListView, DetailView
+from django.shortcuts import get_object_or_404
 
-from blog.models import Tag
+from utils.models import Tag
 from .models import KitchenPage
 
 
-def index(request):
-    tags = Tag.objects.filter(
-        kitchenpage__isnull=False,
-    )[:]
-    pages = KitchenPage.objects.all()[:]
-    context = {
-        'title': _('Kitchen'),
-        'tags': tags,
-        'pages': pages,
-    }
-    return render(request, 'kitchen/index.html', context)
+class KitchenPageListView(ListView):
+    model = KitchenPage
+    template_name = 'kitchen/kitchenpage-list.html'
+
+    def get_queryset(self):
+        if self.kwargs.get('tag', None):
+            self.tag = get_object_or_404(Tag, name=self.kwargs['tag'])
+            return self.tag.kitchenpage_set.all()
+        else:
+            self.tag = None
+            return KitchenPage.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        tags = Tag.objects.filter(
+            kitchenpage__isnull=False,
+        )[:]
+        context['title'] = f"{_('Kitchen')}"
+        context['tags'] = tags
+        return context
 
 
-def tag_pk(request, pk):
-    try:
-        queried_tag = Tag.objects.get(pk=pk)
-    except ObjectDoesNotExist:
-        raise Http404("Tag does not exist")
-    tags = Tag.objects.filter(
-        kitchenpage__isnull=False,
-    )[:]
-    pages = KitchenPage.objects.all().filter(tags__pk=queried_tag.pk)[:]
-    context = {
-        'title': f'{_("Kitchen")} - {queried_tag.name}',
-        'tags': tags,
-        'pages': pages,
-    }
-    return render(request, 'kitchen/index.html', context)
+class KitchenPageDetailView(DetailView):
+    model = KitchenPage
+    template_name = 'kitchen/kitchenpage-detail.html'
+    slug_field = 'pk'
 
-
-def tag_name(request, name):
-    try:
-        queried_tag = Tag.objects.get(name=name)
-    except ObjectDoesNotExist:
-        raise Http404("Tag does not exist")
-    tags = Tag.objects.filter(
-        kitchenpage__isnull=False,
-    )[:]
-    pages = KitchenPage.objects.all().filter(tags__pk=queried_tag.pk)[:]
-    context = {
-        'title': f'{_("Kitchen")} - {queried_tag.name}',
-        'tags': tags,
-        'pages': pages,
-    }
-    return render(request, 'kitchen/index.html', context)
-
-
-def page(request, pk):
-    try:
-        page = KitchenPage.objects.get(pk=pk)
-    except ObjectDoesNotExist:
-        raise Http404("Page does not exist")
-    context = {
-        'title': f'{_("Kitchen")} - {page.title}',
-        'page': page,
-    }
-    return render(request, 'kitchen/page.html', context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = f"{self.object.title} - {_('Kitchen')}"
+        return context

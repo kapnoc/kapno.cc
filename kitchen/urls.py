@@ -1,11 +1,10 @@
 from django.urls import path
 
-from . import views
+from .views import KitchenPageListView, KitchenPageDetailView
 
 app_name = 'kitchen'
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('tag/<int:pk>', views.tag_pk, name='tag_pk'),
-    path('tag/<str:name>', views.tag_name, name='tag_name'),
-    path('page/<int:pk>', views.page, name='page'),
+    path('', KitchenPageListView.as_view(), name='index'),
+    path('tag/<str:tag>', KitchenPageListView.as_view(), name='tag'),
+    path('page/<int:pk>', KitchenPageDetailView.as_view(), name='page'),
 ]

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block 'contents' %}
+
+{% load i18n %}
+
+<h5>{% trans 'Found in category: ' %}</h5>
+<div class="row">
+    {% for gallery in photo.public_galleries %}
+    <a class="btn green darken-2" href="{% url 'gallery:gallery-detail' gallery.slug %}">{{ gallery.title }}</a>
+    {% endfor %}
+</div>
+
+<div class="card">
+    <div class="card-image">
+        <a href="{{ photo.image.url }}">
+            <img class="img-fluid card-img-top" src="{{ photo.get_display_url }}" alt="{{ photo.caption }}" />
+        </a>
+    </div>
+
+    <div class="card-content grey-text text-darken-4">
+        <span class="card-title green-text text-darken-2">{{ photo.title }}</span>
+        <p>{{ photo.caption }}</p>
+    </div>
+</div>
+
+{% endblock %}

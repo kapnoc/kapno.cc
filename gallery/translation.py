@@ -1,7 +1,13 @@
 from modeltranslation.translator import register, TranslationOptions
-from .models import GalleryEntry
+from photologue.models import Gallery, Photo
+# from .models import GalleryEntry
 
 
-@register(GalleryEntry)
-class GalleryEntryTranslationOptions(TranslationOptions):
-    fields = ('name', 'description',)
+@register(Gallery)
+class GalleryTranslationOptions(TranslationOptions):
+    fields = ('title', 'description',)
+
+
+@register(Photo)
+class PhotoTranslationOptions(TranslationOptions):
+    fields = ('title', 'caption',)

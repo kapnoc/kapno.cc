@@ -1,14 +1,14 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 from django.utils.translation import gettext as _
+from django.views.generic import ListView
 
 from .models import HomePage
 
 
-def index(request):
-    pages = HomePage.objects.all()
-    context = {
-        'title': _('Home'),
-        'pages': pages,
-    }
-    return render(request, 'home/index.html', context)
+class HomePageView(ListView):
+    model = HomePage
+    template_name = 'home/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = f"{_('Home')}"
+        return context

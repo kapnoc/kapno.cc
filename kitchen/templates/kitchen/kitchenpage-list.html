@@ -6,7 +6,7 @@
 <h5>{% trans 'Categories: ' %}</h5>
 <div class="row">
     {% for tag in tags %}
-    <a class="btn green darken-2" href="{% url 'kitchen:tag_pk' pk=tag.pk %}">
+    <a class="btn green darken-2" href="{% url 'kitchen:tag' tag.name %}">
         {{ tag.name }}
     </a>
     {% endfor %}
@@ -16,7 +16,7 @@
 
 <h5>{% trans 'Pages: ' %}</h5>
 <div class="row">
-    {% for page in pages %}
+    {% for page in kitchenpage_list %}
     <div class="col s6 m3">
         <a href="{% url 'kitchen:page' pk=page.pk %}">
             <div class="card small">

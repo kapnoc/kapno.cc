@@ -1,8 +1,7 @@
 from django.db import models
 
-from django_kapnoc.models import MarkdownPage
 
-from blog.models import Tag
+from utils.models import Tag, MarkdownPage
 
 
 class HomePage(MarkdownPage):

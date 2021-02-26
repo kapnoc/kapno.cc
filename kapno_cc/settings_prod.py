@@ -40,8 +40,8 @@ ALLOWED_HOSTS = ['kapno.cc']
 # Application definition
 
 INSTALLED_APPS = [
-    'django_kapnoc',
     'kapno_cc',
+    'utils',
     'home',
     'gallery',
     'blog',
@@ -52,10 +52,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'modeltranslation',
     'martor',
-    'easy_thumbnails',
+    'photologue',
+    'sortedm2m',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -198,19 +202,3 @@ GS_FILE_OVERWRITE = False
 GS_CREDENTIALS = service_account.Credentials.from_service_account_info(
     json.loads(env("GS_CREDENTIALS_JSON"))
 )
-
-
-# Auto Thumbnail app
-THUMBNAIL_DEFAULT_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-THUMBNAIL_ALIASES = {
-    '': {
-        'admin_small': {'size': (100, 75), 'crop': True},
-        'small_square': {'size': (100, 100), 'crop': True},
-        'small_4_3': {'size': (120, 90), 'crop': True},
-        'medium_square': {'size': (300, 300), 'crop': True},
-        'medium_4_3': {'size': (360, 270), 'crop': True},
-        'xlarge_square': {'size': (1000, 1000), 'crop': True},
-        'xlarge_4_3': {'size': (1200, 900), 'crop': True},
-        'xlarge_3_1': {'size': (1200, 400), 'crop': True},
-    },
-}
