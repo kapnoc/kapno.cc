@@ -25,6 +25,7 @@ urlpatterns = i18n_patterns(
     path('blog/', include('blog.urls')),
     path('kitchen/', include('kitchen.urls')),
 ) + [
+    path('utils/', include('utils.urls')),
     path('martor/', include('martor.urls')),
     path('photologue/', include('photologue.urls', namespace='photologue')),
 ]

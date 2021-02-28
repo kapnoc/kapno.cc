@@ -172,8 +172,7 @@ MARTOR_THEME = 'bootstrap'
 
 MARTOR_ENABLE_CONFIGS = {
     'emoji': 'true',  # to enable/disable emoji icons.
-    'imgur': 'false',  # to enable/disable imgur/custom uploader.
-    # 'imgur': 'true',  # to enable/disable imgur/custom uploader.
+    'imgur': 'true',  # to enable/disable imgur/custom uploader.
     'mention': 'false',  # to enable/disable mention
     'jquery': 'true',
     # to include/revoke jquery (required for admin default django)
@@ -182,7 +181,7 @@ MARTOR_ENABLE_CONFIGS = {
     'hljs': 'true',  # to enable/disable hljs highlighting in preview
 }
 
-MARTOR_UPLOAD_URL = '/django_kapnoc/image/md_uploader/'  # change to local uploader
+MARTOR_UPLOAD_URL = '/utils/image/md_uploader/'  # change to local uploader
 
 MAX_IMAGE_UPLOAD_SIZE = 20971520  # 20MB
 
