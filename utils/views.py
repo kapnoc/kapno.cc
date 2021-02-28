@@ -58,7 +58,7 @@ def markdown_uploader(request):
                 return HttpResponse(
                     data, content_type='application/json', status=405)
 
-            slug = image_uuid = "{0}-{1}".format(
+            slug = "{0}-{1}".format(
                 uuid.uuid4().hex[:10], slugify(image.name))
             photo_db = Photo(
                 image=image,
